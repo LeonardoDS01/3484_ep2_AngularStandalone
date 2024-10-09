@@ -1,0 +1,34 @@
+<div class="container mt-5">
+  <h2>Listar Productos</h2>
+
+  <div class="mb-3">
+    <label for="categoria" class="form-label">Filtrar por categoría: </label>
+    <select [(ngModel)]="categoriaSeleccionada" (change)="filtrarPorCategoria()" id="categoria" class="form-select">
+      <option value="" selected>-- Seleccionar categoría --</option>
+      <option *ngFor="let categoria of categorias" [value]="categoria">{{categoria}}</option>
+    </select>
+  </div>
+
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Categoria</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let producto of filtrarPorCategoria()">
+        <td>{{ producto.nombre }}</td>
+        <td>{{ producto.categoria }}</td>
+        <td [ngClass]="{'text-success fw-bold':producto.precio>1000}">{{ producto.precio | currency:'PEN' }}</td>
+        <td>
+          <button class="btn btn-danger btn-sm" (click)="eliminarProducto(producto.id)">Eliminar</button>
+          <button class="btn btn-info btn-sm" routerLink="/detalles/{{producto.id}}">Detalles</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

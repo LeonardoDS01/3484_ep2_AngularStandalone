@@ -1,0 +1,66 @@
+<!-- <div class="container mt-5">
+    <h2>Agregar Producto</h2>
+    <form>
+        <div class="form-group">
+            <label for="nombreProducto">Nombre del Producto</label>
+            <input type="text" name="nombreProducto" class="form-control" id="nombreProducto" placeholder="Ingresa el nombre del producto" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="categoriaProducto">Categoría</label>
+            <select name="categoriaProducto" class="form-control" id="categoriaProducto" required>
+                <option value="" disabled selected>Selecciona una categoría</option>
+                <option value="Electrónica">Electrónica</option>
+                <option value="Ropa">Ropa</option>
+                <option value="Hogar">Hogar</option>
+                <option value="Otros">Otros</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="precioProducto">Precio</label>
+            <input type="number" name="precioProducto" class="form-control" id="precioProducto" placeholder="Ingresa el precio" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="descripcionProducto">Descripción</label>
+            <textarea class="form-control" name="descripcionProducto" id="descripcionProducto" rows="3" placeholder="Describe el producto" required></textarea>
+        </div>
+        
+        <button (click)="agregarProducto()" type="submit" class="btn btn-primary">Agregar Producto</button>
+    </form>
+    <p [ngStyle]="{'color':exitoso?'green':'red'}">{{mensajeFin}}</p>
+</div> -->
+
+
+<div class="container">   
+    <h2>Agregar Producto</h2>
+    <form (ngSubmit)="agregarProducto()">
+        <div class="form-group">
+            <label for="nombreProducto">Nombre del Producto</label>
+            <input [(ngModel)]="nombreProducto" type="text" name="nombreProducto" class="form-control" id="nombreProducto" placeholder="Ingresa el nombre del producto" required>
+        </div>
+        <div class="form-group">
+            <label for="categoriaProducto">Nombre de Categoría</label>
+            <select [(ngModel)]="categoriaProducto" name="categoriaProducto" class="form-control" id="categoriaProducto" required>
+                <option value="" disabled selected>Selecciona una categoría</option>
+                <option value="Electrónica">Electrónica</option>
+                <option value="Ropa">Ropa</option>
+                <option value="Hogar">Hogar</option>
+                <option value="Otros">Otros</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="precioProducto">Precio</label>
+            <input [(ngModel)]="precioProducto" type="number" name="precioProducto" class="form-control" id="precioProducto" placeholder="Ingresa el precio" required>
+        </div>
+        <div class="form-group">
+            <label for="descripcionProducto">Descripción</label>
+            <textarea [(ngModel)]="descripcionProducto" class="form-control" name="descripcionProducto" id="descripcionProducto" rows="3" placeholder="Describe el producto" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Agregar Producto</button>
+    </form>
+
+    <p [ngStyle]="{'color':exitoso?'green':'red'}">{{mensajeFin}}</p>
+
+</div>
